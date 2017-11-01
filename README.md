@@ -1,5 +1,6 @@
 
 ——————HYDROPHONES——————
+
 This code calculates the Time Difference Of Arrival through the cross correlation of the signals of a hydrophone. The algorithm employed is the Convolution Theorem, which states that the inverse courier-transform of the element-wise multiplication off the Fast Fourier Transform (FFT) and the conjugate of the other FFT returns the cross correlational graph. To prevent aliasing, with a buffer size of 512 data points, a 1024-point FFT is preformed. The FFT returns the cross correlational graph in a strange order (high frequencies first), the index on this order is calculated. Then, the data is sent by UART protocol to a computer, which preforms multilateration of the signals, outputting the angle and expected distance from one of the sensors to the signal source. 
 
 The code is implemented to the FPGA (Nexus-4 DDR) through using the HDL-code functionality of Simulink. Then, the code is synthesized by Vivado.
@@ -7,9 +8,11 @@ The code is implemented to the FPGA (Nexus-4 DDR) through using the HDL-code fun
 Although Hydrophones is coded for my robotics team, it had been an individual endeavor, and the code attached is written solely by myself in the past two years. Currently, I am training a new member of the team to understand the code.
 
 —————FIR Filter Coefficients———
+
 FIR filter coefficients are generated through the get_filter_coefficients.m MATLAB code.
 
 —————How to Parse Data——————
+
 Hydrophone data is stored as raw bytes of data.
 The start of a chunk of data is two bytes of the value ff (or in binary, 11111111).
 We currently use a 12 bit ADC, so each data point is a 12 bit number.
